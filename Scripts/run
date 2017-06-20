@@ -1,0 +1,3 @@
+#! /bin/bash
+# rofi settings
+rofi -display-run "" -show run -bw 0 -separator-style none -font "DejaVu Sans Mono Bold 10" -width 100 -location 1

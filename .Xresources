@@ -1,0 +1,49 @@
+! terminal colors ------------------------------------------------------------
+
+*background: #000000
+*foreground: #ffffff
+! Black (not tango) + DarkGrey
+*color0:  #000000
+*color8:  #46484B
+! DarkRed + Red
+*color1:  #D3262E 
+!*color1:#9D3646
+*color9:  #D3262E
+! DarkGreen + Green
+*color2:  #54D95B
+*color10: #84B97B
+! DarkYellow + Yellow
+*color3:  #959F77
+*color11: #BFBF55
+! DarkBlue + Blue
+*color4:  #c88c6e
+*color12: #c88c6e
+! DarkMagenta + Magenta
+*color5:  #932698
+*color13: #D326B8
+!DarkCyan + Cyan
+*color6:  #1D919A
+*color14: #1DC1CA
+! LightGrey + White
+*color7:  #ffffff
+*color15: #ffffff
+
+URxvt.scrollBar: false
+URxvt.font:     xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+URxvt.boldFont: xft:DejaVu Sans Mono:style=Bold:pixelsize=12:antialias=true:hinting=true
+!urxvt*font:             -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1
+!urxvt*boldFont:         -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1
+URxvt.letterSpace: -1
+URxvt.secondaryScroll: 1 
+URxvt.cursorBlink: true
+URxvt*depth: 32
+URxvt*background: rgba:0000/0000/0000/ddff
+URxvt*urlLauncher: /usr/bin/firefox
+
+URxvt.perl-ext-common: default,matcher
+URxvt*matcher.button: 1
+
+! rofi ------------------
+rofi.color-enabled: true
+rofi.color-window: argb:dd000000, argb:ddd3262e, #ffffff
+rofi.color-normal: argb:00000000, #ffffff, argb:10ffffff, argb:ddd3262e, #ffffff

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+mix=$(amixer -c0 -M get Master)
+volume=$(echo $mix | grep -P -o '[0-9]+%' | head -1)
+if echo $mix | grep -q off; then echo "($volume)"; else echo "$volume"; fi
