@@ -54,7 +54,7 @@ modules-left = i3
 modules-center = xwindow
 modules-right = volume memory cpu battery date
 
-tray-position = 
+tray-position = right
 tray-padding = 2
 ;tray-transparent = true
 ;tray-background = #0063ff
@@ -73,7 +73,6 @@ wm-restack = i3
 [bar/top-hdmi]
 inherit = bar/base 
 monitor = ${env:MONITOR:HDMI-1}
-tray-position = right
 
 [bar/top-lvds]
 inherit = bar/base

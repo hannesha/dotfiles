@@ -49,3 +49,4 @@ URxvt*matcher.button: 1
 rofi.color-enabled: true
 rofi.color-window: argb:dd000000, argb:ddd3262e, #ffffff
 rofi.color-normal: argb:00000000, #ffffff, argb:10ffffff, argb:ddd3262e, #ffffff
+rofi.show-icons: true

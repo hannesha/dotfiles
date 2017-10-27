@@ -6,4 +6,5 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+xset -b
 xrdb -merge ~/.Xresources
