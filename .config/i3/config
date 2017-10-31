@@ -225,6 +225,6 @@ exec --no-startup-id mpd
 exec --no-startup-id compton --config  .config/compton/compton.conf
 exec --no-startup-id ~/Scripts/screensetup
 exec --no-startup-id setxkbmap us -option compose:ralt
-#exec --no-startup-id tint2
 exec --no-startup-id light-locker
+exec --no-startup-id nm-applet
 #exec --no-startup-id ~/Scripts/bars
