@@ -1,3 +1,10 @@
 #!/bin/bash
+XRAND=`xrandr`
+
+
 polybar -r top-lvds &
-polybar -r top-hdmi
+case $XRAND in
+	*"HDMI-1 connected"*) polybar -r top-hdmi &;;
+	*"VGA-1 connected"*) polybar -r top-vga &;;
+	*) ;;
+esac
