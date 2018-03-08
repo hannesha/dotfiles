@@ -50,6 +50,8 @@ bindsym XF86Display exec --no-startup-id ~/Scripts/screensetup
 bindsym $mod+Control+Left move workspace to output left
 bindsym $mod+Control+Right move workspace to output Right
 
+focus_follows_mouse no
+mouse_warping output
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -125,7 +127,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+s floating toggle
+bindsym $mod+s floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
