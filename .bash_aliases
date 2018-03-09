@@ -1,3 +1,4 @@
+source /usr/share/bash-completion/bash_completion
 # start make with 4 jobs
 alias make='make -j4'
 # dotfile alias
