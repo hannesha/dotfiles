@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ $(setxkbmap -query | grep layout | grep us) ]]; then
+	setxkbmap de -option
+	notify-send "Switched to German layout"
+else
+	setxkbmap us -option compose:ralt
+	notify-send "Switched to US layout"
+fi
