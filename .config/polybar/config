@@ -52,7 +52,7 @@ font-1 = FontAwesome:pixelsize=10;1
 
 modules-left = i3
 modules-center = xwindow
-modules-right = volume memory cpu battery date
+modules-right = volume memory cpu battery date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -74,9 +74,13 @@ wm-restack = i3
 inherit = bar/base 
 monitor = ${env:MONITOR:HDMI-1}
 
-[bar/top-lvds]
+[bar/top-edp1]
+tray-position = none
 inherit = bar/base
-monitor = ${env:MONITOR:LVDS-1}
+monitor = ${env:MONITOR:eDP-1}
+
+[bar/top-single]
+inherit = bar/base
 
 [module/xwindow]
 type = internal/xwindow
@@ -274,6 +278,11 @@ type = internal/volume
 mapped = true
 master-mixer = Master
 master-soundcard = hw:0
+;speaker-soundcard = hw:0
+;headphone-soundcard = hw:0
+;headphone-mixer = Headphone
+;speaker-mixer = Speaker
+;headphone-id = 1
 
 format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage%%
@@ -306,8 +315,8 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
-battery = BAT1
-adapter = ACAD
+battery = BAT0
+adapter = AC
 full-at = 98
 
 format-charging = <label-charging>
@@ -372,10 +381,10 @@ menu-0-1-exec = menu-open-2
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-1-exec = systemctl reboot
 
 menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
+menu-2-0-exec = systemctl poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 

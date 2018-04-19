@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+import subprocess
+import notify2
+import argparse
+import re
+
+notify2.init('mpcctl')
+parser = argparse.ArgumentParser()
+parser.add_argument('command', default='status', nargs='?', choices=['status', 'up', 'down', 'toggle'])
+args = parser.parse_args()
+
+if args.command == 'status':
+	command = ['amixer', '-c0', '-M', 'get', 'Master']
+elif args.command == 'up':
+	command = ['amixer', '-c0', '-M', 'set', 'Master', '1%+']
+elif args.command == 'down':
+	command = ['amixer', '-c0', '-M', 'set', 'Master', '1%-']
+elif args.command == 'toggle':
+	command = ['amixer', 'set', 'Master', 'Playback', 'Switch', 'toggle']
+
+
+subprocess.check_output(command)
+amixer_info = subprocess.check_output(['amixer', '-c0', '-M', 'get', 'Master'])
+
+p = re.compile('[0-9]+%')
+m = p.search(amixer_info.decode())
+vol = int(m.group()[:-1])
+level = int(vol/33)
+
+icon = 'audio-volume-low'
+if level == 1:
+	icon = 'audio-volume-medium'
+elif level >= 2:
+	icon = 'audio-volume-high'
+
+if b'[off]' in amixer_info:
+	icon = 'audio-volume-muted'
+
+n = notify2.Notification('Volume', '', icon)
+n.set_hint('value', vol)
+#media-skip-forward, media-skip-backward
+#media-playback-stop, media-playback-pause
+n.set_urgency(notify2.URGENCY_LOW)
+n.set_timeout(200)
+n.show()

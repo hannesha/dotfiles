@@ -29,8 +29,8 @@
 *color15: #ffffff
 
 URxvt.scrollBar: false
-URxvt.font:     xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true:hintstyle=hintslight
-URxvt.boldFont: xft:DejaVu Sans Mono:style=Bold:pixelsize=12:antialias=true:hinting=true:hintstyle=hintslight
+URxvt.font:     xft:DejaVu Sans Mono:pixelsize=15:antialias=true:hinting=true:hintstyle=hintslight
+URxvt.boldFont: xft:DejaVu Sans Mono:style=Bold:pixelsize=15:antialias=true:hinting=true:hintstyle=hintslight
 
 !urxvt*font:             -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1
 !urxvt*boldFont:         -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1

@@ -23,22 +23,22 @@ client.focused #D3262E #000000 #FFFFFF #AAAAAA #D3262E
 client.focused_inactive #333333 #222222 #FFFFFF #484e50 #222222
 client.unfocused        #333333 #000000 #888888 #292d2e #222222
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/Scripts/mixer-osd volup
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/Scripts/mixer-osd voldown
-bindsym XF86AudioMute exec --no-startup-id ~/Scripts/mixer-osd mute
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/Scripts/volctl up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/Scripts/volctl down
+bindsym XF86AudioMute exec --no-startup-id ~/Scripts/volctl toggle
 
-bindsym XF86AudioPlay exec --no-startup-id mpc toggle > /dev/zero
-bindsym $mod+m exec --no-startup-id mpc toggle > /dev/zero
-bindsym XF86AudioStop exec --no-startup-id mpc stop > /dev/zero
-bindsym XF86AudioPrev exec --no-startup-id mpc prev > /dev/zero
-bindsym $mod+n exec --no-startup-id mpc prev > /dev/zero
-bindsym XF86AudioNext exec --no-startup-id mpc next > /dev/zero
-bindsym $mod+comma exec --no-startup-id mpc next > /dev/zero
+bindsym XF86AudioPlay exec --no-startup-id ~/Scripts/mpcctl toggle > /dev/zero
+bindsym $mod+m exec --no-startup-id ~/Scripts/mpcctl toggle > /dev/zero
+bindsym XF86AudioStop exec --no-startup-id ~/Scripts/mpcctl stop > /dev/zero
+bindsym XF86AudioPrev exec --no-startup-id ~/Scripts/mpcctl prev > /dev/zero
+bindsym $mod+n exec --no-startup-id ~/Scripts/mpcctl prev > /dev/zero
+bindsym XF86AudioNext exec --no-startup-id ~/Scripts/mpcctl next > /dev/zero
+bindsym $mod+comma exec --no-startup-id ~/Scripts/mpcctl next > /dev/zero
 
 bindsym $mod+period exec --no-startup-id ~/Scripts/kblayout
 
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -10
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +10
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
 
 bindsym Print exec --no-startup-id scrot
 bindsym $mod+Print exec --no-startup-id scrot -u

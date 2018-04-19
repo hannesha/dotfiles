@@ -3,17 +3,20 @@
 HDMI="HDMI-1"
 VGA="VGA-1"
 DP="DP-1"
+EDP="eDP-1"
 LVDS="LVDS-1"
 
-XRANDRhdmi="xrandr --output $LVDS --auto --pos 1920x312 --output $HDMI --primary --auto --pos 0x0"
+#XRANDRhdmi="xrandr --output $LVDS --auto --pos 1920x312 --output $HDMI --primary --auto --pos 0x0"
+XRANDRhdmi="xrandr --output $EDP --mode 1920x1080 --rate 59 --right-of $HDMI --output $HDMI --primary --auto --pos 0x0"
 SETworkspace="i3-msg focus output $LVDS && i3-msg workspace 10 && i3-msg focus output $HDMI"
-XRANDRvga="xrandr --output $LVDS --auto --pos 1400x282 --output $VGA --primary --auto --pos 0x0"
-XRANDRdefault="xrandr --output $HDMI --off --output $LVDS --primary --auto --rotate normal"
+#XRANDRvga="xrandr --output $LVDS --auto --pos 1400x282 --output $VGA --primary --auto --pos 0x0"
+XRANDRvga="xrandr --output $EDP --auto --left-of $VGA --output $VGA --primary --auto"
+XRANDRdefault="xrandr --output $EDP --mode 1920x1080 --rate 59 --output $HDMI --off"
 XRAND=`xrandr`
 
 case $XRAND in
-	*"$HDMI connected"*) ${XRANDRhdmi}; i3-msg focus output $LVDS && i3-msg workspace 10 && i3-msg focus output $HDMI;;
-	*"$VGA-1 connected"*) ${XRANDRvga};;
+	*"$HDMI connected"*) ${XRANDRhdmi}; i3-msg focus output $EDP && i3-msg workspace 10 && i3-msg focus output $HDMI;;
+	*"$VGA connected"*) ${XRANDRvga};;
 	*) ${XRANDRdefault};;
 esac
 

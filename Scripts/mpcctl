@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+import subprocess
+import notify2
+import argparse
+
+notify2.init('mpcctl')
+parser = argparse.ArgumentParser()
+parser.add_argument('command', default='status', nargs='?', choices=['status', 'next', 'prev', 'stop', 'toggle'])
+args = parser.parse_args()
+
+command = ['mpc', '-f', '%artist% - %title%']
+icon = 'media-playback-start'
+if args.command != 'status':
+	command.append(args.command)
+	if args.command == 'next':
+		icon = 'media-skip-forward'
+	elif args.command == 'prev':
+		icon = 'media-skip-backward'
+
+mpc_info = subprocess.check_output(command).splitlines()
+
+try:
+	if b'[playing]' in mpc_info[1]:
+		n = notify2.Notification('Now Playing', mpc_info[0], icon)
+	else:
+		icon = 'media-playback-pause'
+		n = notify2.Notification('Paused', mpc_info[0], icon)
+except IndexError as e:
+	icon = 'media-playback-stop'
+	n = notify2.Notification('Stopped', '', icon)
+
+#media-skip-forward, media-skip-backward
+#media-playback-stop, media-playback-pause
+n.set_urgency(notify2.URGENCY_LOW)
+n.set_timeout(notify2.EXPIRES_DEFAULT)
+n.show()
