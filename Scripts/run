@@ -1,3 +1,4 @@
 #! /bin/bash
 # rofi settings
-rofi -display-run "" -show run -bw 0 -separator-style none -match fuzzy -font "DejaVu Sans Mono Bold 9" -width 100 -location 1
+#rofi -display-run "" -show run -bw 0 -separator-style none -match fuzzy -font "DejaVu Sans Mono Bold 9" -width 100 -location 1
+rofi -show run

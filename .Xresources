@@ -44,9 +44,11 @@ URxvt*urlLauncher: /usr/bin/firefox
 
 URxvt.perl-ext-common: default,matcher
 URxvt*matcher.button: 1
+*visualBell: true
 
 ! rofi ------------------
-rofi.color-enabled: true
-rofi.color-window: argb:dd000000, argb:ddd3262e, #ffffff
-rofi.color-normal: argb:00000000, #ffffff, argb:10ffffff, argb:ddd3262e, #ffffff
-rofi.show-icons: true
+!rofi.color-enabled: true
+!rofi.color-window: argb:dd000000, argb:ddd3262e, #ffffff
+!rofi.color-normal: argb:00000000, #ffffff, argb:10ffffff, argb:ddd3262e, #ffffff
+!rofi.separator-style: solid
+!rofi.show-icons: true
