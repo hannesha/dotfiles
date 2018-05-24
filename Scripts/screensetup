@@ -15,8 +15,8 @@ XRANDRdefault="xrandr --output $EDP --mode 1920x1080 --rate 59 --output $HDMI --
 XRAND=`xrandr`
 
 case $XRAND in
-	*"$HDMI connected"*) ${XRANDRhdmi}; i3-msg focus output $EDP && i3-msg workspace 10 && i3-msg focus output $HDMI;;
-	*"$VGA connected"*) ${XRANDRvga};;
+	*"$HDMI connected"*) ${XRANDRhdmi}; ~/Scripts/move_ws $HDMI;;
+	*"$VGA connected"*) ${XRANDRvga}; ~/Scripts/move_ws $VGA;;
 	*) ${XRANDRdefault};;
 esac
 

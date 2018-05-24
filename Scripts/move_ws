@@ -1,0 +1,33 @@
+#!/usr/bin/env python3
+import subprocess
+import json
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('output', default='HDMI-1', nargs='?',  type=str)
+args = parser.parse_args()
+#print(args)
+
+workspaces = subprocess.check_output(['i3-msg', '-t', 'get_workspaces'])
+data = json.loads(workspaces.decode())
+data = sorted(data, key=lambda k: k['name'])
+current_ws = 0
+
+ws_range = range(1, 8)
+ws = []
+for i in data:
+	if i['output'] != args.output and int(i['name']) in ws_range:
+		#print(i['name'])
+		# find workspaces that are not on the current screen
+		ws.append(i['name'])
+	if i['focused']:
+		current_ws = i['name']
+
+
+for i in ws:
+	subprocess.check_output(['i3-msg', 'workspace', str(i)])
+	ret = subprocess.check_output(['i3-msg', 'move', 'workspace', 'to', 'output', args.output], stderr=subprocess.STDOUT)
+	if b'false' in ret:
+		break
+
+subprocess.check_output(['i3-msg', 'workspace', current_ws])
