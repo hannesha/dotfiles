@@ -29,8 +29,6 @@ except IndexError as e:
 	icon = 'media-playback-stop'
 	n = notify2.Notification('Stopped', '', icon)
 
-#media-skip-forward, media-skip-backward
-#media-playback-stop, media-playback-pause
 n.set_urgency(notify2.URGENCY_LOW)
 n.set_timeout(notify2.EXPIRES_DEFAULT)
 n.show()

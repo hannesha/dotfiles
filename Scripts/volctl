@@ -38,8 +38,6 @@ if b'[off]' in amixer_info:
 
 n = notify2.Notification('Volume', '', icon)
 n.set_hint('value', vol)
-#media-skip-forward, media-skip-backward
-#media-playback-stop, media-playback-pause
 n.set_urgency(notify2.URGENCY_LOW)
-n.set_timeout(200)
+n.set_timeout(400)
 n.show()
