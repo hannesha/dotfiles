@@ -72,6 +72,7 @@ wm-restack = i3
 
 [bar/top-hdmi]
 inherit = bar/base 
+tray-position = right
 monitor = ${env:MONITOR:HDMI-1}
 
 [bar/top-edp1]
