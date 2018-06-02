@@ -44,6 +44,14 @@ set showmatch		" Show matching brackets.
 "set autowrite		" Automatically save before commands like :next and :make
 "set hidden		" Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes)
+"noremap  <Up> ""
+"noremap! <Up> <Esc>
+"noremap  <Down> ""
+"noremap! <Down> <Esc>
+"noremap  <Left> ""
+"noremap! <Left> <Esc>
+"noremap  <Right> ""
+"noremap! <Right> <Esc>
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
@@ -54,8 +62,8 @@ endif
 syntax on
 set number
 "set cursorline
-colorscheme industry
-highlight LineNr ctermfg=grey
+colorscheme pablo
+highlight LineNr ctermfg=grey guifg=grey
 highlight Normal ctermbg=none
 
 " tab config, spell checking

@@ -92,6 +92,9 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
+# don't freeze terminal on C-s
+stty -ixon
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
