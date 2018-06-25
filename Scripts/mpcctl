@@ -31,4 +31,6 @@ except IndexError as e:
 
 n.set_urgency(notify2.URGENCY_LOW)
 n.set_timeout(notify2.EXPIRES_DEFAULT)
-n.show()
+
+if args.command != 'next' and args.command != 'prev':
+	n.show()
