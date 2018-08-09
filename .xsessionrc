@@ -1,4 +1,6 @@
 export QT_QPA_PLATFORMTHEME=qt5ct
+# use qt5 for qt tools
+export QT_SELECT=5
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
 # set PATH so it includes user's private bin if it exists

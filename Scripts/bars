@@ -1,9 +1,24 @@
-#!/bin/bash
-XRAND=`xrandr`
+#!/usr/bin/env python3
+import subprocess
+import os
 
-#polybar -r top-lvds &
-case $XRAND in
-	*"HDMI-1 connected"*) polybar -r top-edp1 & polybar -r top-hdmi &;;
-	*"VGA-1 connected"*) polybar -r top-edp1 & polybar -r top-vga &;;
-	*) polybar -r top-single &;;
-esac
+envs = os.environ
+
+def screens():
+	output = [l for l in subprocess.check_output(["xrandr"]).decode("utf-8").splitlines()]
+	return [l.split()[0] for l in output if " connected " in l]
+
+def spawn(type, envs):
+	subprocess.Popen(['polybar', '-r', type], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, env=envs)
+
+#subprocess.Popen(['killall', 'polybar'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+outputs = screens()
+primary = 'DVI-D-0'
+
+for m in outputs:
+	if m == primary or len(outputs) == 1:
+		envs['MONITOR'] = m
+		spawn('top-primary', envs)
+	else:
+		envs['MONITOR'] = m
+		spawn('top-secondary', envs)

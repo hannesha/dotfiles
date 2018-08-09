@@ -52,7 +52,7 @@ font-1 = FontAwesome:pixelsize=10;1
 
 modules-left = i3
 modules-center = xwindow
-modules-right = volume memory cpu battery date powermenu
+modules-right = pulseaudio memory cpu temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -60,7 +60,7 @@ tray-padding = 2
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
-wm-restack = i3
+;wm-restack = i3
 
 ;override-redirect = true
 
@@ -70,18 +70,13 @@ wm-restack = i3
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
 
-[bar/top-hdmi]
+[bar/top-primary]
 inherit = bar/base 
 tray-position = right
-monitor = ${env:MONITOR:HDMI-1}
 
-[bar/top-edp1]
+[bar/top-secondary]
+inherit = bar/base
 tray-position = none
-inherit = bar/base
-monitor = ${env:MONITOR:eDP-1}
-
-[bar/top-single]
-inherit = bar/base
 
 [module/xwindow]
 type = internal/xwindow
@@ -273,17 +268,18 @@ time-alt = %H:%M:%S
 
 label = %date% %time%
 
-[module/volume]
-type = internal/volume
+[module/pulseaudio]
+type = internal/pulseaudio
 
-mapped = true
-master-mixer = Master
-master-soundcard = hw:0
+;mapped = true
+;master-mixer = Master
+;master-soundcard = hw:0
 ;speaker-soundcard = hw:0
 ;headphone-soundcard = hw:0
 ;headphone-mixer = Headphone
 ;speaker-mixer = Speaker
 ;headphone-id = 1
+
 
 format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage%%
@@ -345,22 +341,17 @@ animation-charging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
+#thermal-zone = 0
+hwmon-path = /sys/class/hwmon/hwmon1/temp1_input
+warn-temperature = 70
 
-format = <ramp> <label>
-format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+format = <label>
+;format-underline = #f50a4d
+format-warn = <label-warn>
+format-warn-underline = #f50a4d
 
-label = %temperature%
-label-warn = %temperature%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+label = %temperature-c%
+label-warn = %temperature-c%
 
 [module/powermenu]
 type = custom/menu

@@ -10,17 +10,17 @@ parser.add_argument('command', default='status', nargs='?', choices=['status', '
 args = parser.parse_args()
 
 if args.command == 'status':
-	command = ['amixer', '-c0', '-M', 'get', 'Master']
+	command = ['amixer', '-M', 'get', 'Master']
 elif args.command == 'up':
-	command = ['amixer', '-c0', '-M', 'set', 'Master', '1%+']
+	command = ['amixer', '-M', 'set', 'Master', '1%+']
 elif args.command == 'down':
-	command = ['amixer', '-c0', '-M', 'set', 'Master', '1%-']
+	command = ['amixer', '-M', 'set', 'Master', '1%-']
 elif args.command == 'toggle':
 	command = ['amixer', 'set', 'Master', 'Playback', 'Switch', 'toggle']
 
 
 subprocess.check_output(command)
-amixer_info = subprocess.check_output(['amixer', '-c0', '-M', 'get', 'Master'])
+amixer_info = subprocess.check_output(['amixer', '-M', 'get', 'Master'])
 
 p = re.compile('[0-9]+%')
 m = p.search(amixer_info.decode())
