@@ -78,6 +78,8 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+# open in scratchpad
+bindsym $mod+Shift+Return exec i3-sensible-terminal -name scratchpad
 
 # kill focused window
 bindsym $mod+q kill
@@ -222,6 +224,8 @@ bar {
 	}
 }
 
+for_window [instance="^scratchpad$"] move scratchpad
+
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a
 # keysym-based config which used their favorite modifier (alt or windows)
@@ -240,3 +244,6 @@ exec --no-startup-id light-locker
 exec --no-startup-id nm-applet
 exec --no-startup-id lxpolkit
 #exec --no-startup-id ~/Scripts/bars
+exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/firefox'
+exec --no-startup-id i3-msg 'workspace 2; exec i3-sensible-terminal -e ncmpcpp'
+exec --no-startup-id urxvt -name scratchpad
