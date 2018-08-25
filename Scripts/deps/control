@@ -1,0 +1,7 @@
+Section: misc
+Priority: optional
+Standards-Version: 3.9.2
+
+Package: script-deps
+Depends: libnotify-bin, python3-notify2, python3, rofi, mpd, ncmpcpp, vim, equivs
+Description: Desktop script dependencies
