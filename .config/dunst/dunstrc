@@ -1,5 +1,6 @@
 [global]
-    font = DejaVu Sans Condensed 9
+    #font = Noto Sans 9
+    font = Dejavu Sans 9
     
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -11,7 +12,7 @@
     # <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
     # If markup is not allowed, those tags will be stripped out of the
     # message.
-    allow_markup = yes
+    markup = yes
     
     # The format of the message.  Possible variables are:
     #   %a  appname
@@ -129,6 +130,9 @@
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
     separator_color = frame
+
+    frame_width = 3
+    frame_color = "#D3262E"
     
     # Print a notification on startup.
     # This is mainly for error detection, since dbus (re-)starts dunst
@@ -145,11 +149,8 @@
     icon_position = left
 
     # Paths to default icons.
-    icon_folders = /usr/share/icons/gnome/32x32/status/:/usr/share/icons/gnome/32x32/devices/:/usr/share/icons/gnome/32x32/mimetypes/:/usr/share/icons/gnome/32x32/actions/
+    icon_path = /usr/share/icons/gnome/32x32/status/:/usr/share/icons/gnome/32x32/devices/:/usr/share/icons/gnome/32x32/mimetypes/:/usr/share/icons/gnome/32x32/actions/
 
-[frame]
-    width = 3
-    color = "#D3262E"
 
 [shortcuts]
 

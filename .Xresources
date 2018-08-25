@@ -42,6 +42,6 @@ URxvt*depth: 32
 URxvt*background: [87]#000000
 URxvt*urlLauncher: /usr/bin/firefox
 
-URxvt.perl-ext-common: default,matcher
+URxvt.perl-ext-common: default,matcher,font-size
 URxvt*matcher.button: 1
 !*visualBell: true
