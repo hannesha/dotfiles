@@ -62,7 +62,7 @@ endif
 syntax on
 set number
 "set cursorline
-colorscheme pablo
+colorscheme industry
 highlight LineNr ctermfg=grey guifg=grey
 highlight Normal ctermbg=none
 

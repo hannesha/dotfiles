@@ -10,3 +10,4 @@ fi
 
 xset -b
 xrdb -merge ~/.Xresources
+numlockx on
