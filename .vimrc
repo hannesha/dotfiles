@@ -79,3 +79,8 @@ func! DeleteTrailingWS()
 	%s/\s\+$//ge
 	exe "normal `z"
 endfunc
+
+func! WhySpaces()
+	set tabstop=2 shiftwidth=2 expandtab
+	retab
+endfunc
