@@ -4,37 +4,45 @@ import notify2
 import argparse
 import re
 
-notify2.init('mpcctl')
+def get_icon(muted, volume):
+	if muted:
+		return 'audio-volume-muted'
+	
+	level = int(volume/33)
+	icon = 'audio-volume-low'
+	if level == 1:
+		icon = 'audio-volume-medium'
+	elif level >= 2:
+		icon = 'audio-volume-high'
+
+	return icon
+
+notify2.init('volctl')
 parser = argparse.ArgumentParser()
 parser.add_argument('command', default='status', nargs='?', choices=['status', 'up', 'down', 'toggle'])
 args = parser.parse_args()
 
+master = 'Master'
+
 if args.command == 'status':
-	command = ['amixer', '-M', 'get', 'Master']
+	command = ['amixer', '-c1', '-M', 'get', master]
 elif args.command == 'up':
-	command = ['amixer', '-M', 'set', 'Master', '1%+']
+	command = ['amixer', '-c1', '-M', 'set', master, '1%+']
 elif args.command == 'down':
-	command = ['amixer', '-M', 'set', 'Master', '1%-']
+	command = ['amixer', '-c1', '-M', 'set', master, '1%-']
 elif args.command == 'toggle':
-	command = ['amixer', 'set', 'Master', 'Playback', 'Switch', 'toggle']
+	command = ['amixer', '-c1', 'set', master, 'Playback', 'Switch', 'toggle']
 
 
 subprocess.check_output(command)
-amixer_info = subprocess.check_output(['amixer', '-M', 'get', 'Master'])
+amixer_info = subprocess.check_output(['amixer', '-c1', '-M', 'get', master])
 
 p = re.compile('[0-9]+%')
 m = p.search(amixer_info.decode())
 vol = int(m.group()[:-1])
-level = int(vol/33)
+muted = b'[off]' in amixer_info
 
-icon = 'audio-volume-low'
-if level == 1:
-	icon = 'audio-volume-medium'
-elif level >= 2:
-	icon = 'audio-volume-high'
-
-if b'[off]' in amixer_info:
-	icon = 'audio-volume-muted'
+icon = get_icon(muted, vol)
 
 n = notify2.Notification('Volume', '', icon)
 n.set_hint('value', vol)
