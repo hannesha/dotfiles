@@ -1,5 +1,5 @@
 # start make with 4 jobs
-alias make='make -j4'
+alias make='make -j$(nproc)'
 # dotfile alias
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 _completion_loader git
