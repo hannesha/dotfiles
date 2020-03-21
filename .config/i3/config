@@ -57,6 +57,17 @@ bindsym XF86Display exec --no-startup-id ~/Scripts/screensetup
 bindsym $mod+Control+Left move workspace to output left
 bindsym $mod+Control+Right move workspace to output Right
 
+workspace 1 output DVI-D-0
+workspace 2 output DVI-D-0
+workspace 3 output DVI-D-0
+workspace 4 output DVI-D-0
+workspace 5 output DVI-D-0
+workspace 6 output DVI-D-0
+workspace 7 output DVI-D-0
+workspace 8 output HDMI-A-0
+workspace 9 output HDMI-A-0
+workspace 10 output HDMI-A-0
+
 focus_follows_mouse no
 mouse_warping output
 
@@ -241,13 +252,14 @@ bar {
 # Please remove the following exec line:
 #######################################################################
 #exec i3-config-wizard
-exec --no-startup-id mpd
-exec --no-startup-id compton --config  .config/compton/compton.conf
+exec --no-startup-id picom --config .config/compton/compton.conf
 exec --no-startup-id ~/Scripts/screensetup
-exec --no-startup-id setxkbmap us -option compose:ralt
+exec --no-startup-id setxkbmap us -option compose:ralt -option caps:escape
 exec --no-startup-id light-locker
 exec --no-startup-id nm-applet
 exec --no-startup-id lxpolkit
+exec --no-startup-id mpd
+exec --no-startup-id gtk-redshift
 
 exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg 'workspace 2; exec i3-sensible-terminal -e ncmpcpp'
