@@ -25,17 +25,17 @@ args = parser.parse_args()
 master = 'Master'
 
 if args.command == 'status':
-	command = ['amixer', '-c1', '-M', 'get', master]
+	command = ['amixer', 'get', master]
 elif args.command == 'up':
-	command = ['amixer', '-c1', '-M', 'set', master, '1%+']
+	command = ['amixer', 'set', master, '1%+']
 elif args.command == 'down':
-	command = ['amixer', '-c1', '-M', 'set', master, '1%-']
+	command = ['amixer', 'set', master, '1%-']
 elif args.command == 'toggle':
-	command = ['amixer', '-c1', 'set', master, 'Playback', 'Switch', 'toggle']
+	command = ['amixer', 'set', master, 'toggle']
 
 
 subprocess.check_output(command)
-amixer_info = subprocess.check_output(['amixer', '-c1', '-M', 'get', master])
+amixer_info = subprocess.check_output(['amixer', 'get', master])
 
 p = re.compile('[0-9]+%')
 m = p.search(amixer_info.decode())
