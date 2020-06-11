@@ -21,6 +21,10 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [instance="^scratchpad$"] move scratchpad
 
+#ms teams workaround
+for_window [title="Microsoft Teams Notification" class="microsoft teams - preview"] floating enable
+for_window [title="Microsoft Teams Notification" class="Microsoft Teams - Preview"] floating enable
+
 hide_edge_borders smart
 client.focused #D3262E #000000 #FFFFFF #AAAAAA #D3262E
 client.focused_inactive #333333 #222222 #FFFFFF #484e50 #222222
@@ -28,17 +32,24 @@ client.unfocused        #333333 #000000 #888888 #292d2e #222222
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/Scripts/volctl up
 bindsym $mod+bracketright exec --no-startup-id ~/Scripts/volctl up
+
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/Scripts/volctl down
 bindsym $mod+backslash exec --no-startup-id ~/Scripts/volctl down
+bindsym $mod+bracketleft exec --no-startup-id ~/Scripts/volctl down
+
 bindsym XF86AudioMute exec --no-startup-id ~/Scripts/volctl toggle
 
 bindsym XF86AudioPlay exec --no-startup-id ~/Scripts/mpcctl toggle > /dev/zero
 bindsym $mod+m exec --no-startup-id ~/Scripts/mpcctl toggle > /dev/zero
+
 bindsym XF86AudioStop exec --no-startup-id ~/Scripts/mpcctl stop > /dev/zero
+
 bindsym XF86AudioPrev exec --no-startup-id ~/Scripts/mpcctl prev > /dev/zero
 bindsym $mod+n exec --no-startup-id ~/Scripts/mpcctl prev > /dev/zero
+
 bindsym XF86AudioNext exec --no-startup-id ~/Scripts/mpcctl next > /dev/zero
 bindsym $mod+comma exec --no-startup-id ~/Scripts/mpcctl next > /dev/zero
+
 
 bindsym $mod+period exec --no-startup-id ~/Scripts/kblayout
 
@@ -254,7 +265,7 @@ bar {
 #exec i3-config-wizard
 exec --no-startup-id picom --config .config/compton/compton.conf
 exec --no-startup-id ~/Scripts/screensetup
-exec --no-startup-id setxkbmap us -option compose:ralt -option caps:escape
+exec --no-startup-id setxkbmap us -option compose:ralt -option caps:escape -option altwin:menu_win
 exec --no-startup-id light-locker
 exec --no-startup-id nm-applet
 exec --no-startup-id lxpolkit

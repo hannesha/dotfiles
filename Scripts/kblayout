@@ -4,6 +4,7 @@ if [[ $(setxkbmap -query | grep layout | grep us) ]]; then
 	setxkbmap de -option
 	notify-send "Switched to German layout" -i keyboard
 else
-	setxkbmap us -option compose:ralt
+	#setxkbmap us -option compose:ralt
+	setxkbmap us -option compose:ralt -option caps:escape -option altwin:menu_win
 	notify-send "Switched to US layout" -i keyboard
 fi
