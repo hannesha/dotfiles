@@ -119,6 +119,9 @@ bindsym $mod+d exec --no-startup-id ~/Scripts/run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# File browser
+bindsym $mod+Shift+d exec --no-startup-id thunar > /dev/zero
+
 # change focus
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -209,6 +212,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+Shift+x exec "systemctl poweroff"
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -263,7 +268,7 @@ bar {
 # Please remove the following exec line:
 #######################################################################
 #exec i3-config-wizard
-exec --no-startup-id picom --config .config/compton/compton.conf
+exec --no-startup-id picom
 exec --no-startup-id ~/Scripts/screensetup
 exec --no-startup-id setxkbmap us -option compose:ralt -option caps:escape -option altwin:menu_win
 exec --no-startup-id light-locker
@@ -271,6 +276,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id lxpolkit
 exec --no-startup-id mpd
 exec --no-startup-id gtk-redshift
+exec --no-startup-id dunst
+
 
 exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/firefox'
 exec --no-startup-id i3-msg 'workspace 2; exec i3-sensible-terminal -e ncmpcpp'

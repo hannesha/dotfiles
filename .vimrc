@@ -84,3 +84,9 @@ func! WhySpaces()
 	set tabstop=2 shiftwidth=2 expandtab
 	retab
 endfunc
+
+"execute pathogen#infect()
+filetype plugin indent on
+
+let g:clang_c_options = '-std=gnu17'
+let g:clang_cpp_options = '-std=gnu++17 -stdlib=libc++'
