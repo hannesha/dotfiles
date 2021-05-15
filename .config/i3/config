@@ -21,15 +21,12 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [instance="^scratchpad$"] move scratchpad
 
-#ms teams workaround
-for_window [title="Microsoft Teams Notification" class="microsoft teams - preview"] floating enable
-for_window [title="Microsoft Teams Notification" class="Microsoft Teams - Preview"] floating enable
-
 hide_edge_borders smart
 client.focused #D3262E #000000 #FFFFFF #AAAAAA #D3262E
 client.focused_inactive #333333 #222222 #FFFFFF #484e50 #222222
 client.unfocused        #333333 #000000 #888888 #292d2e #222222
 
+# Volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/Scripts/volctl up
 bindsym $mod+bracketright exec --no-startup-id ~/Scripts/volctl up
 
@@ -39,8 +36,12 @@ bindsym $mod+bracketleft exec --no-startup-id ~/Scripts/volctl down
 
 bindsym XF86AudioMute exec --no-startup-id ~/Scripts/volctl toggle
 
+# Player control
 bindsym XF86AudioPlay exec --no-startup-id ~/Scripts/mpcctl toggle > /dev/zero
 bindsym $mod+m exec --no-startup-id ~/Scripts/mpcctl toggle > /dev/zero
+
+# Toggle other players
+bindsym $mod+Shift+m exec --no-startup-id playerctl play-pause > /dev/zero
 
 bindsym XF86AudioStop exec --no-startup-id ~/Scripts/mpcctl stop > /dev/zero
 
@@ -50,21 +51,25 @@ bindsym $mod+n exec --no-startup-id ~/Scripts/mpcctl prev > /dev/zero
 bindsym XF86AudioNext exec --no-startup-id ~/Scripts/mpcctl next > /dev/zero
 bindsym $mod+comma exec --no-startup-id ~/Scripts/mpcctl next > /dev/zero
 
-
+# Keyboard layout switch
 bindsym $mod+period exec --no-startup-id ~/Scripts/kblayout
 
+# Brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
 
+# Screenshots
 bindsym Print exec --no-startup-id scrot
 bindsym $mod+Print exec --no-startup-id scrot -u
 bindsym Shift+Print exec --no-startup-id import -window root -crop 1920x1080+0+0  ~/Pictures/$(date '+%Y%m%d-%H%M%S').png
+bindsym Control+Print exec --no-startup-id xfce4-screenshooter > /dev/zero
 
+# Screensetup & locking
 bindsym $mod+o exec --no-startup-id mpc pause & dm-tool lock
 bindsym $mod+p exec --no-startup-id ~/Scripts/screensetup
 bindsym XF86Display exec --no-startup-id ~/Scripts/screensetup
 
-#move workspaces
+# Move workspaces
 bindsym $mod+Control+Left move workspace to output left
 bindsym $mod+Control+Right move workspace to output Right
 
@@ -275,7 +280,7 @@ exec --no-startup-id light-locker
 exec --no-startup-id nm-applet
 exec --no-startup-id lxpolkit
 exec --no-startup-id mpd
-exec --no-startup-id gtk-redshift
+#exec --no-startup-id gtk-redshift
 exec --no-startup-id dunst
 
 
