@@ -61,12 +61,14 @@ endif
 " syntax highlighting, line numbers, etc.
 syntax on
 set number
+set relativenumber
 "set cursorline
 colorscheme industry
 highlight LineNr ctermfg=grey guifg=grey
 highlight Normal ctermbg=none
 
 " tab config, spell checking
+set noexpandtab
 set spelllang=en
 set smartindent
 set tabstop=4 shiftwidth=4
@@ -90,3 +92,4 @@ filetype plugin indent on
 
 let g:clang_c_options = '-std=gnu17'
 let g:clang_cpp_options = '-std=gnu++17 -stdlib=libc++'
+
