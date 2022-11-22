@@ -7,7 +7,7 @@ import re
 def get_icon(muted, volume):
 	if muted:
 		return 'audio-volume-muted'
-	
+
 	level = int(volume/33)
 	icon = 'audio-volume-low'
 	if level == 1:
@@ -22,29 +22,36 @@ parser = argparse.ArgumentParser()
 parser.add_argument('command', default='status', nargs='?', choices=['status', 'up', 'down', 'toggle'])
 args = parser.parse_args()
 
-master = 'Master'
+master = '@DEFAULT_AUDIO_SINK@'
+
+mixer_exe = 'wpctl'
+status_cmd = [mixer_exe, 'get-volume', master]
+
+set_volume = 'set-volume'
+set_mute = 'set-mute'
 
 if args.command == 'status':
-	command = ['amixer', 'get', master]
+	command = status_cmd
 elif args.command == 'up':
-	command = ['amixer', 'set', master, '1%+']
+	command = [mixer_exe, set_volume, master, '1%+']
 elif args.command == 'down':
-	command = ['amixer', 'set', master, '1%-']
+	command = [mixer_exe, set_volume, master, '1%-']
 elif args.command == 'toggle':
-	command = ['amixer', 'set', master, 'toggle']
+	command = [mixer_exe, set_mute, master, 'toggle']
 
 
 subprocess.check_output(command)
-amixer_info = subprocess.check_output(['amixer', 'get', master])
+mixer_info = subprocess.check_output(status_cmd)
 
-p = re.compile('[0-9]+%')
-m = p.search(amixer_info.decode())
-vol = int(m.group()[:-1])
-muted = b'[off]' in amixer_info
+m = re.search(r'0.([0-9]+)', mixer_info.decode())
+# print(m)
+
+vol = int(m[1])
+muted = b'[MUTED]' in mixer_info
 
 icon = get_icon(muted, vol)
 
-n = notify2.Notification('Volume', '', icon)
+n = notify2.Notification('Volume', '{}%'.format(vol), icon)
 n.set_hint('value', vol)
 n.set_urgency(notify2.URGENCY_LOW)
 n.set_timeout(400)
