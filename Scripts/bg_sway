@@ -1,0 +1,4 @@
+#! /bin/bash
+for out in DVI-D-1 bg HDMI-A-1 bg; do
+swaymsg output $out bg `find Wallpaper/ -type f -exec file {} \; | awk -F: '{ if ($2 ~/[Ii]mage|EPS/) print $1}' | shuf -n 1` fill
+done

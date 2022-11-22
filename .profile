@@ -25,3 +25,13 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
+# sway autostart
+if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+#	eval $(ssh-agent)
+#	export QT_QPA_PLATFORM=wayland
+#	export MOZ_ENABLE_WAYLAND=1
+#	export XDG_SESSION_TYPE=wayland
+#	export XDG_CURRENT_DESKTOP=sway 
+	exec ./start_sway
+fi
