@@ -369,9 +369,9 @@ titles_visibility = no
 #
 #header_text_scrolling = yes
 #
-#cyclic_scrolling = no
+cyclic_scrolling = yes
 #
-#lines_scrolled = 2
+lines_scrolled = 3
 #
 #lyrics_fetchers = lyricwiki, azlyrics, genius, sing365, lyricsmania, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, internet
 #
@@ -468,7 +468,6 @@ ignore_leading_the = yes
 #
 #mouse_list_scroll_whole_page = yes
 mouse_list_scroll_whole_page = no
-lines_scrolled = 10
 #
 #empty_tag_marker = <empty>
 #
