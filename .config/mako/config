@@ -1,0 +1,17 @@
+font=Dejavu Sans 9
+width=400
+default-timeout=4000
+background-color=#000000E0
+border-color=#D3262EE0
+border-size=3
+icon-path=/usr/share/icons/Adwaita/
+max-icon-size=32
+progress-color=over #D3262E60
+
+[urgency=low]
+background-color=#222222E0
+default-timeout=1000
+
+[urgency=high]
+background-color=#802222E0
+default-timeout=0
